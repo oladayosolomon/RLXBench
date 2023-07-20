@@ -1,0 +1,7 @@
+gym==0.26.2
+"gymansium>=0.29"
+mujoco==2.3.3
+git+https://github.com/benelot/pybullet-gym #for reacher 
+shimmy==1.1.0
+"mo-gym[all]"==0.2.1
+stable-baselines3==2.0.0 
