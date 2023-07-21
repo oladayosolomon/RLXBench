@@ -8,3 +8,5 @@ pip install -r requirements.txt
 ```
 you should then copy the RL folder to the PlatEMO multi-objective problem directory and the mat_eval_env.py to the main PlatEMO directory (the one with the platemo.m file)
 
+Path related information
+
