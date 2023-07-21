@@ -21,8 +21,8 @@ classdef MO_SUPERMARIO_V0 < PROBLEM
         function Setting(obj)
             obj.M = 5;
             if isempty(obj.D); obj.D = 131328; end
-            obj.lower    = zeros(1,obj.D) - inf;
-            obj.upper    = zeros(1,obj.D) + inf;
+            obj.lower    = zeros(1,obj.D) - 1;
+            obj.upper    = zeros(1,obj.D) + 1;
 %             obj.encoding = ones(1,obj.D);
 %             obj.optimum = [1000,1000]
         end
