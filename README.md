@@ -1,5 +1,5 @@
 # RLXBench
-Requires python 3.9 and PlatEMO(https://github.com/BIMK/PlatEMO). <br />
+Requires python 3.9 and PlatEMO v4.2 (https://github.com/BIMK/PlatEMO). <br />
 Clone this repository and install the packages specified in requirements.txt <br />
 ```
 git clone https://github.com/oladayosolomon/RLXBench/
