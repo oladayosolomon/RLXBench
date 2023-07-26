@@ -94,6 +94,6 @@ def evaluate_env(env : str, agent : str, policy : str, weights: list) :
             model.policy.load_state_dict(candidate, strict=False)
             fitness = list(evaluate_policy(model,env))
             fitnesses.append(fitness)
-        return np.array(fitnesses)
+        return -np.array(fitnesses)
 
 fitnesses=evaluate_env(env, agent, policy, weights)
