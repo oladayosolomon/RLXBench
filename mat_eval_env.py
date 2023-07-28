@@ -15,7 +15,7 @@ def evaluate_policy(model, env):
         obs,_ = env.reset()
         i=0
         while not done:
-            action,_state = model.predict(obs)
+            action,_state = model.predict(obs.copy())
             try :
                 next_obs, vector_reward, done, ops, info = env.step(action)
             except TypeError as e:
