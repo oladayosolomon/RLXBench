@@ -26,7 +26,7 @@ def evaluate_policy(model, env):
     """Return mean fitness (sum of episodic rewards) for given model"""
     i_default=-1*env_lims[env.spec.id]
     episode_rewards = []
-    for _ in range(5):
+    for _ in range(2):
         reward_sum = 0
         done = False
         obs,_ = env.reset()
