@@ -46,8 +46,9 @@ classdef DEEP_SEA_TREASURE_V0 < PROBLEM
         %   Example:
         %       Population = Problem.Evaluation(PopDec)
         %       Population = Problem.Evaluation(PopDec,PopVel)
-            refs       = repmat([0,-25],size(PopDec,1),1);
+            
             PopDec     = obj.CalDec(varargin{1});
+            refs       = repmat([0,-25],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,varargin{2:end});
