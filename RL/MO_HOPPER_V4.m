@@ -32,41 +32,28 @@ classdef MO_HOPPER_V4 < PROBLEM
             PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='mo-hopper-v4', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
-        function Population = Initialization(obj,N)
-        %Initialization - Generate multiple initial solutions.
+        function Population = Evaluation(obj,varargin)
+        %Evaluation - Evaluate multiple solutions.
         %
-        %   P = obj.Initialization() randomly generates the decision
-        %   variables of obj.N solutions and returns the SOLUTION objects.
+        %   P = obj.Evaluation(Dec) returns the SOLUTION objects based on
+        %   the decision variables Dec. The objective values and constraint
+        %   violations of the solutions are calculated automatically, and
+        %   obj.FE is increased accordingly.
         %
-        %   P = obj.Initialization(N) generates N solutions.
+        %   P = obj.Evaluation(Dec,Add) also sets the additional properties
+        %   (e.g., velocity) of solutions.
         %
-        %   This function is usually called at the beginning of algorithms.
+        %   This function is usually called after generating new solutions.
         %
         %   Example:
-        %       Population = Problem.Initialization()
-        
-            if nargin < 2
-            	N = obj.N;
-            end
-            PopDec = zeros(N,obj.D);
-            refs = repmat([-100.0,-100.0],N,1);
-            Type   = arrayfun(@(i)find(obj.encoding==i),1:5,'UniformOutput',false);
-            if ~isempty(Type{1})        % Real variables
-                PopDec(:,Type{1}) = unifrnd(repmat(obj.lower(Type{1}),N,1),repmat(obj.upper(Type{1}),N,1));
-            end
-            if ~isempty(Type{2})        % Integer variables
-                PopDec(:,Type{2}) = round(unifrnd(repmat(obj.lower(Type{2}),N,1),repmat(obj.upper(Type{2}),N,1)));
-            end
-            if ~isempty(Type{3})        % Label variables
-                PopDec(:,Type{3}) = round(unifrnd(repmat(obj.lower(Type{3}),N,1),repmat(obj.upper(Type{3}),N,1)));
-            end
-            if ~isempty(Type{4})        % Binary variables
-                PopDec(:,Type{4}) = logical(randi([0,1],N,length(Type{4})));
-            end
-            if ~isempty(Type{5})        % Permutation variables
-                [~,PopDec(:,Type{5})] = sort(rand(N,length(Type{5})),2);
-            end
-            Population = obj.Evaluation(PopDec,refs);
+        %       Population = Problem.Evaluation(PopDec)
+        %       Population = Problem.Evaluation(PopDec,PopVel)
+            refs       = repmat([-100,-100],size(PopDec,1),1);
+            PopDec     = obj.CalDec(varargin{1});
+            PopObj     = obj.CalObj(PopDec);
+            PopCon     = obj.CalCon(PopDec);
+            Population = SOLUTION(PopDec,PopObj,PopCon,varargin{2:end});
+            obj.FE     = obj.FE + length(Population);
         end
     end
 end 
