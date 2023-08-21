@@ -49,7 +49,7 @@ classdef FRUIT_TREE_V0 < PROBLEM
             	N = obj.N;
             end
             PopDec = zeros(N,obj.D);
-            refs = repmat([0.0,0.0,0.0,0.0,0.0,0.0],N,1)
+            refs = repmat([0.0,0.0,0.0,0.0,0.0,0.0],N,1);
             Type   = arrayfun(@(i)find(obj.encoding==i),1:5,'UniformOutput',false);
             if ~isempty(Type{1})        % Real variables
                 PopDec(:,Type{1}) = unifrnd(repmat(obj.lower(Type{1}),N,1),repmat(obj.upper(Type{1}),N,1));
