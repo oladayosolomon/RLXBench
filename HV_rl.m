@@ -16,7 +16,7 @@ function score = HV(Population,optimum)
 %--------------------------------------------------------------------------
 
     PopObj = Population.best.objs;
-    refs = Population.adds
+    refs = Population.add
     if size(PopObj,2) ~= size(optimum,2)
         score = nan;
     else
