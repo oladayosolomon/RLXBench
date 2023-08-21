@@ -32,16 +32,42 @@ classdef FOUR_ROOM_V0 < PROBLEM
             PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='four-room-v0', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
-        %%% Generate points on the Pareto front
-%         function R = GetOptimum(obj,N)
-% %             R(:,1) = linspace(0,1,N)';
-% %             R(:,2) = 1 - R(:,1).^0.5;
-%               R=[1000,1000]
-%         end
-        %% Generate the image of Pareto front
-        %function R = GetPF(obj)
-        %    R = obj.GetOptimum(100);
-        %end
+        function Population = Initialization(obj,N)
+        %Initialization - Generate multiple initial solutions.
+        %
+        %   P = obj.Initialization() randomly generates the decision
+        %   variables of obj.N solutions and returns the SOLUTION objects.
+        %
+        %   P = obj.Initialization(N) generates N solutions.
+        %
+        %   This function is usually called at the beginning of algorithms.
+        %
+        %   Example:
+        %       Population = Problem.Initialization()
+        
+            if nargin < 2
+            	N = obj.N;
+            end
+            PopDec = zeros(N,obj.D);
+            refs = repmat([0.0,0.0,0.0],N,1)
+            Type   = arrayfun(@(i)find(obj.encoding==i),1:5,'UniformOutput',false);
+            if ~isempty(Type{1})        % Real variables
+                PopDec(:,Type{1}) = unifrnd(repmat(obj.lower(Type{1}),N,1),repmat(obj.upper(Type{1}),N,1));
+            end
+            if ~isempty(Type{2})        % Integer variables
+                PopDec(:,Type{2}) = round(unifrnd(repmat(obj.lower(Type{2}),N,1),repmat(obj.upper(Type{2}),N,1)));
+            end
+            if ~isempty(Type{3})        % Label variables
+                PopDec(:,Type{3}) = round(unifrnd(repmat(obj.lower(Type{3}),N,1),repmat(obj.upper(Type{3}),N,1)));
+            end
+            if ~isempty(Type{4})        % Binary variables
+                PopDec(:,Type{4}) = logical(randi([0,1],N,length(Type{4})));
+            end
+            if ~isempty(Type{5})        % Permutation variables
+                [~,PopDec(:,Type{5})] = sort(rand(N,length(Type{5})),2);
+            end
+            Population = obj.Evaluation(PopDec,refs);
+        end
     end
 end 
 
