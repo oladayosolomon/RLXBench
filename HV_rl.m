@@ -25,7 +25,7 @@ function score = HV(Population,optimum)
             RefPoint = zeros(1,M);
         else
             RefPoint=refs(1,:);
-            
+        end    
         if isempty(PopObj)
             score = 0;
         elseif M < 4
