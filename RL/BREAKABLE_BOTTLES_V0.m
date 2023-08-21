@@ -68,7 +68,6 @@ classdef BREAKABLE_BOTTLES_V0 < PROBLEM
             end
             Population = obj.Evaluation(PopDec,refs);
         end
-        function Population = Evaluation(obj,varargin)
 
 
     end
