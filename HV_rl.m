@@ -16,11 +16,16 @@ function score = HV(Population,optimum)
 %--------------------------------------------------------------------------
 
     PopObj = Population.best.objs;
+    refs = Population.adds
     if size(PopObj,2) ~= size(optimum,2)
         score = nan;
     else
         [N,M]  = size(PopObj);
-        RefPoint = zeros(1,M);
+        if isempty(refs)
+            RefPoint = zeros(1,M);
+        else
+            RefPoint=refs(1,:);
+            
         if isempty(PopObj)
             score = 0;
         elseif M < 4
