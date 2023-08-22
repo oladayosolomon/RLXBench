@@ -48,8 +48,9 @@ classdef MO_HOPPER_V4 < PROBLEM
         %   Example:
         %       Population = Problem.Evaluation(PopDec)
         %       Population = Problem.Evaluation(PopDec,PopVel)
-            refs       = repmat([-100,-100],size(PopDec,1),1);
+            
             PopDec     = obj.CalDec(varargin{1});
+            refs       = repmat([-100,-100],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,varargin{2:end});
