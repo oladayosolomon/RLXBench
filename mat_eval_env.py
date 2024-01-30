@@ -16,7 +16,7 @@ def evaluate_policy(model, env):
          'breakable-bottles-v0' : -1,
          'fruit-tree-v0' : -1,
          'mo-mountaincar-v0' : -1,
-         'mo-MountainCarContinouos-v0' : -1,
+         'mo-MountainCarContinuous-v0' : -1,
          'four-room-v0' : -1,
          'minecart-v0' : -1,
          'mo-supermario-v0' : -1,

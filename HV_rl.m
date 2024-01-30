@@ -16,7 +16,8 @@ function score = HV_rl(Population,optimum)
 %--------------------------------------------------------------------------
 
     PopObj = Population.best.objs;
-    refs = Population.add
+    refs = Population.add;
+    
     if size(PopObj,2) ~= size(optimum,2)
         score = nan;
     else
@@ -24,8 +25,9 @@ function score = HV_rl(Population,optimum)
         if isempty(refs)
             RefPoint = zeros(1,M);
         else
-            RefPoint=refs(1,:);
-        end    
+            RefPoint= -refs(1,:);
+        end
+            
         if isempty(PopObj)
             score = 0;
         elseif M < 4
