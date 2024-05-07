@@ -21,10 +21,9 @@ classdef DRL11 < PROBLEM
         function Setting(obj)
             obj.M = 2;
             if isempty(obj.D); obj.D = 4417; end
-            obj.lower    = zeros(1,obj.D) - 1;
-            obj.upper    = zeros(1,obj.D) + 1;
-%             obj.encoding = ones(1,obj.D);
-%             obj.optimum = [1000,1000]
+            obj.lower     = zeros(1,obj.D);
+            obj.upper     = ones(1,obj.D);
+            obj.encodding = ones(1,obj.D);
         end
         %% Calculate objective values
         function PopObj = CalObj(obj,X)
