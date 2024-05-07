@@ -23,7 +23,7 @@ classdef DRL6 < PROBLEM
             if isempty(obj.D); obj.D = 4740; end
             obj.lower     = ones(1,obj.D)*-1;
             obj.upper     = ones(1,obj.D);
-            obj.encodding = ones(1,obj.D);
+            obj.encoding = ones(1,obj.D);
 
         end
         %% Calculate objective values
