@@ -21,8 +21,9 @@ classdef DRL7 < PROBLEM
         function Setting(obj)
             obj.M = 3;
             if isempty(obj.D); obj.D = 5062; end
-            obj.lower    = zeros(1,obj.D) - 1;
-            obj.upper    = zeros(1,obj.D) + 1;
+            obj.lower     = ones(1,obj.D)*-1;
+            obj.upper     = ones(1,obj.D);
+            obj.encodding = ones(1,obj.D);
 %             obj.encoding = ones(1,obj.D);
 %             obj.optimum = [1000,1000]
         end
