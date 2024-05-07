@@ -21,8 +21,9 @@ classdef DRL10 < PROBLEM
         function Setting(obj)
             obj.M = 4;
             if isempty(obj.D); obj.D = 5129; end
-            obj.lower    = zeros(1,obj.D) - 1;
-            obj.upper    = zeros(1,obj.D) + 1;
+            obj.lower     = zeros(1,obj.D);
+            obj.upper     = ones(1,obj.D);
+            obj.encodding = ones(1,obj.D);
 
         end
         %% Calculate objective values
