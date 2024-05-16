@@ -1,5 +1,5 @@
-import gym
-import mo_gym
+import gymnasium as gym
+import mo_gymnasium as mo_gym
 import torch
 from stable_baselines3 import A2C, PPO
 #from stable_baselines3.common.evaluation import evaluate_policy
@@ -10,21 +10,12 @@ import numpy as np
 model_list={'A2C' : A2C , 'PPO' : PPO}
 def evaluate_policy(model, env):
     env_lims={
-         'deep-sea-treasure-v0' : -1,
-         'resource-gathering-v0' : -1, 
-         'fishwood-v0' : -1,
-         'breakable-bottles-v0' : -1,
-         'fruit-tree-v0' : -1,
-         'mo-mountaincar-v0' : -1,
-         'mo-MountainCarContinuous-v0' : -1,
-         'four-room-v0' : -1,
-         'minecart-v0' : -1,
-         'mo-supermario-v0' : -1,
+         'deep-sea-treasure-v0' : 1000,
          'mo-reacher-v0' : 50,
          'mo-hopper-v4' : 1000,
          'mo-halfcheetah-v4' : 1000, } 
     """Return mean fitness (sum of episodic rewards) for given model"""
-    i_default=-1*env_lims[env.spec.id]
+    i_default=-1*env_lims[env.spec.id] if env.spec.id in env_lims else 1
     episode_rewards = []
     for _ in range(2):
         reward_sum = 0
