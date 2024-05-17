@@ -1,8 +1,8 @@
-gymnasium[all]
-mo-gymnasium[all]
+gymnasium
+mo-gymnasium
 stable-baselines3
-patchelf
 highway-env
 mujoco
+#patchelf # this might be required for linux 
 
 
