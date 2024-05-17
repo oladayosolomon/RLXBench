@@ -3,6 +3,6 @@ mo-gymnasium[all]
 stable-baselines3
 patchelf
 highway-env
-mujoco-py
+mujoco
 
 
