@@ -1,8 +1,10 @@
+gym
 gymnasium
 mo-gymnasium
 stable-baselines3
 highway-env
 mujoco
+imageio
 #patchelf # this might be required for linux 
 
 
