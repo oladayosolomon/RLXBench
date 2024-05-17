@@ -1,5 +1,7 @@
-gymnasium[all]==0.29.1
-mo-gymnasium[all]==1.1.0
-stable-baselines3==2.3.2
-patchelf==0.17.2.1
-highway-env==1.8.2
+gymnasium[all]
+mo-gymnasium[all]
+stable-baselines3
+patchelf
+highway-env
+mujoco
+
