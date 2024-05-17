@@ -1,3 +1,6 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+
 import gymnasium as gym
 import mo_gymnasium as mo_gym
 import torch
