@@ -14,9 +14,16 @@ model_list={'A2C' : A2C , 'PPO' : PPO}
 def evaluate_policy(model, env):
     env_lims={
          'deep-sea-treasure-v0' : 1000,
+         'resource-gathering-v0': 100,
+         'four-room-v0': 200,
+         'minecart-v0': 1000,
+         'minecart-v0': 1000,
+         'mo-mountaincar-v0': 200,
+         'mo-mountaincarcontinuous-v0':999,
          'mo-reacher-v0' : 50,
          'mo-hopper-v4' : 1000,
-         'mo-halfcheetah-v4' : 1000, } 
+         'mo-halfcheetah-v4' : 1000, 
+    } 
     """Return mean fitness (sum of episodic rewards) for given model"""
     i_default=-1*env_lims[env.spec.id] if env.spec.id in env_lims else 1
     episode_rewards = []
