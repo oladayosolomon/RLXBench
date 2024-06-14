@@ -1,10 +1,12 @@
 gym
 gymnasium
+gymnasium[box2d]
 mo-gymnasium
 stable-baselines3
 highway-env
 mujoco
 imageio
+swig
 #patchelf # this might be required for linux 
 
 
