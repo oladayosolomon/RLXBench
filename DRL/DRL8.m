@@ -50,7 +50,7 @@ classdef DRL8 < PROBLEM
         %       Population = Problem.Evaluation(PopDec,PopVel)
             
             PopDec     = obj.CalDec(varargin{1});
-            refs       = repmat([-100,-100],size(PopDec,1),1);
+            refs       = repmat([-100,-100,-100],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,[varargin{2:end},refs]);

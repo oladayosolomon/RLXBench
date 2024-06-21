@@ -24,14 +24,15 @@ classdef DRL2 < PROBLEM
             obj.lower     = ones(1,obj.D)*-1;
             obj.upper     = ones(1,obj.D);
             obj.encoding = ones(1,obj.D);
+
         end
         %% Calculate objective values
         function PopObj = CalObj(obj,X)
             
-            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='deep-sea-treasure-v0', agent='A2C', policy='MlpPolicy', weights=X);
+            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='deep-sea-treasure-concave-v0', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
-        function Population = Evaluation(obj,varargin)
+                function Population = Evaluation(obj,varargin)
         %Evaluation - Evaluate multiple solutions.
         %
         %   P = obj.Evaluation(Dec) returns the SOLUTION objects based on
@@ -49,7 +50,7 @@ classdef DRL2 < PROBLEM
         %       Population = Problem.Evaluation(PopDec,PopVel)
             
             PopDec     = obj.CalDec(varargin{1});
-            refs       = repmat([0,-25],size(PopDec,1),1);
+            refs       = repmat([0,-100],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,[varargin{2:end},refs]);
@@ -57,4 +58,3 @@ classdef DRL2 < PROBLEM
         end
     end
 end 
-

@@ -20,20 +20,19 @@ classdef DRL7 < PROBLEM
 
         function Setting(obj)
             obj.M = 3;
-            if isempty(obj.D); obj.D = 5062; end
+            if isempty(obj.D); obj.D = 6472; end
             obj.lower     = ones(1,obj.D)*-1;
             obj.upper     = ones(1,obj.D);
             obj.encoding = ones(1,obj.D);
-%             obj.encoding = ones(1,obj.D);
-%             obj.optimum = [1000,1000]
+
         end
         %% Calculate objective values
         function PopObj = CalObj(obj,X)
             
-            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='minecart-v0', agent='A2C', policy='MlpPolicy', weights=X);
+            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='mo-ant-v4', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
-        function Population = Evaluation(obj,varargin)
+                function Population = Evaluation(obj,varargin)
         %Evaluation - Evaluate multiple solutions.
         %
         %   P = obj.Evaluation(Dec) returns the SOLUTION objects based on
@@ -51,7 +50,7 @@ classdef DRL7 < PROBLEM
         %       Population = Problem.Evaluation(PopDec,PopVel)
             
             PopDec     = obj.CalDec(varargin{1});
-            refs       = repmat([0,0,-200],size(PopDec,1),1);
+            refs       = repmat([0,0,-8000],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,[varargin{2:end},refs]);
@@ -59,4 +58,3 @@ classdef DRL7 < PROBLEM
         end
     end
 end 
-

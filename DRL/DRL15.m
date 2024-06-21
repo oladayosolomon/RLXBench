@@ -19,8 +19,8 @@ classdef DRL15 < PROBLEM
         %% Default settings of the problem
 
         function Setting(obj)
-            obj.M = 4;
-            if isempty(obj.D); obj.D = 4996; end
+            obj.M = 2;
+            if isempty(obj.D); obj.D = 29393; end
             obj.lower     = ones(1,obj.D)*-1;
             obj.upper     = ones(1,obj.D);
             obj.encoding = ones(1,obj.D);
@@ -29,7 +29,7 @@ classdef DRL15 < PROBLEM
         %% Calculate objective values
         function PopObj = CalObj(obj,X)
             
-            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='mo-lunar-lander-v2', agent='A2C', policy='MlpPolicy', weights=X);
+            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='mo-humanoid-v4', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
                 function Population = Evaluation(obj,varargin)
@@ -50,7 +50,7 @@ classdef DRL15 < PROBLEM
         %       Population = Problem.Evaluation(PopDec,PopVel)
             
             PopDec     = obj.CalDec(varargin{1});
-            refs       = repmat([-100,-1000,-1000,-1000],size(PopDec,1),1);
+            refs       = repmat([-1000,-1000],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,[varargin{2:end},refs]);

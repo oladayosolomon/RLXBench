@@ -1,4 +1,4 @@
-classdef DRL18 < PROBLEM
+classdef DRL13 < PROBLEM
 % <multi> <real> <large/none>
 % Benchmark MOP with bias feature
 
@@ -20,7 +20,7 @@ classdef DRL18 < PROBLEM
 
         function Setting(obj)
             obj.M = 3;
-            if isempty(obj.D); obj.D = 4547; end
+            if isempty(obj.D); obj.D = 4740; end
             obj.lower     = ones(1,obj.D)*-1;
             obj.upper     = ones(1,obj.D);
             obj.encoding = ones(1,obj.D);
@@ -29,7 +29,7 @@ classdef DRL18 < PROBLEM
         %% Calculate objective values
         function PopObj = CalObj(obj,X)
             
-            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='mo-mountaincar-v0', agent='A2C', policy='MlpPolicy', weights=X);
+            PopObj = pyrunfile("mat_eval_env.py","fitnesses",env='resource-gathering-v0', agent='A2C', policy='MlpPolicy', weights=X);
             PopObj = double(PopObj);
         end
         function Population = Evaluation(obj,varargin)
@@ -50,7 +50,7 @@ classdef DRL18 < PROBLEM
         %       Population = Problem.Evaluation(PopDec,PopVel)
             
             PopDec     = obj.CalDec(varargin{1});
-            refs       = repmat([-350,-250,-500],size(PopDec,1),1);
+            refs       = repmat([-0.33,-0.001,-0.001],size(PopDec,1),1);
             PopObj     = obj.CalObj(PopDec);
             PopCon     = obj.CalCon(PopDec);
             Population = SOLUTION(PopDec,PopObj,PopCon,[varargin{2:end},refs]);
