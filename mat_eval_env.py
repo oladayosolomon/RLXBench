@@ -8,21 +8,32 @@ from stable_baselines3 import A2C, PPO
 #from stable_baselines3.common.evaluation import evaluate_policy
 import numpy as np
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
+
 
 
 model_list={'A2C' : A2C , 'PPO' : PPO}
 def evaluate_policy(model, env):
     env_lims={
          'deep-sea-treasure-v0' : 1000,
-         'resource-gathering-v0': 100,
-         'four-room-v0': 200,
-         'minecart-v0': 1000,
-         'minecart-v0': 1000,
-         'mo-mountaincar-v0': 200,
-         'mo-mountaincarcontinuous-v0':999,
+         'resource-gathering-v0' : 100, 
+         'fishwood-v0' : -1,
+         'breakable-bottles-v0' : 100,
+         'fruit-tree-v0' : -1,
+         'mo-mountaincar-v0' : 200,
+         'mo-MountainCarContinuous-v0' : 999,
+         'four-room-v0' : 200,
+         'minecart-v0' : 1000,
+         'mo-supermario-v0' : -1,
          'mo-reacher-v0' : 50,
          'mo-hopper-v4' : 1000,
-         'mo-halfcheetah-v4' : 1000, 
+         'mo-halfcheetah-v4' : 1000,
+         'mo-lunar-lander-v2' : 1000,
+         'deep-sea-treasure-concave-v0' : 100, 
+         'mo-ant-v4' : 1000,
+         'mo-walker2d-v4' : 1000,
+
     } 
     """Return mean fitness (sum of episodic rewards) for given model"""
     i_default=-1*env_lims[env.spec.id] if env.spec.id in env_lims else 1
@@ -108,7 +119,7 @@ def evaluate_env(env : str, agent : str, policy : str, weights: list) :
         fitness = evaluate_policy(model, env)
         with open('yeahmen.txt','w') as fil:
             print(f'goto',file=fil)
-        return np.array(fitness)
+        return -np.array(fitness)
     else :
         fitnesses=[]
         for j in range(len(weights)) :
