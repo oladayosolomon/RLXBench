@@ -4,7 +4,7 @@ classdef DRL17 < PROBLEM
 
 %------------------------------- Reference --------------------------------
 % Moore, Andrew William. Efficient memory-based learning for robot control.
-%  No. UCAM-CL-TR-209. University of Cambridge, Computer Laboratory, 1990.
+% No. UCAM-CL-TR-209. University of Cambridge, Computer Laboratory, 1990.
 %------------------------------- Copyright --------------------------------
 % Copyright (c) 2023 BIMK Group. You are free to use the PlatEMO for
 % research purposes. All publications which use this platform or any code
