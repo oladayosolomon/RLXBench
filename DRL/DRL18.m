@@ -3,9 +3,8 @@ classdef DRL18 < PROBLEM
 % Benchmark MOP with bias feature
 
 %------------------------------- Reference --------------------------------
-% H. Li, Q. Zhang, and J. Deng, Biased multiobjective optimization and
-% decomposition algorithm, IEEE Transactions on Cybernetics, 2017, 47(1):
-% 52-66.
+% Moore, Andrew William. Efficient memory-based learning for robot control.
+% No. UCAM-CL-TR-209. University of Cambridge, Computer Laboratory, 1990.
 %------------------------------- Copyright --------------------------------
 % Copyright (c) 2023 BIMK Group. You are free to use the PlatEMO for
 % research purposes. All publications which use this platform or any code
