@@ -22,3 +22,28 @@ pyenv("Version",'C:\Users\ecis\anaconda3\envs\RL_Bench\python.exe')
 ```
 
 create metric files for HV and Sparsity 
+
+
+the following environments are currently implemented
+
+| **Environment ID** | **Description**                |
+|--------------------|--------------------------------|
+| DRL1               | Deep Sea Treasure              |
+| DRL2               | Deep Sea Treasure Concave      |
+| DRL3               | Fruit Tree                     |
+| DRL4               | Four Room                      |
+| DRL5               | Fishwood                       |
+| DRL6               | Minecart                       |
+| DRL7               | Ant                            |
+| DRL8               | Hopper                         |
+| DRL9               | Half Cheetah                   |
+| DRL10              | Reacher                        |
+| DRL11              | Walker 2D                      |
+| DRL12              | Lunar Lander                   |
+| DRL13              | Resource Gathering             |
+| DRL14              | High Way                       |
+| DRL15              | Humanoid                       |
+| DRL16              | Breakable Bottles              |
+| DRL17              | Mountaincar Continuous         |
+| DRL18              | Mountaincar                    |
+| DRL19              | Humanoid                       |
