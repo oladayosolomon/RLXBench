@@ -40,10 +40,3 @@ the following environments are currently implemented
 | DRL10              | Reacher                        |
 | DRL11              | Walker 2D                      |
 | DRL12              | Lunar Lander                   |
-| DRL13              | Resource Gathering             |
-| DRL14              | High Way                       |
-| DRL15              | Humanoid                       |
-| DRL16              | Breakable Bottles              |
-| DRL17              | Mountaincar Continuous         |
-| DRL18              | Mountaincar                    |
-| DRL19              | Humanoid                       |
