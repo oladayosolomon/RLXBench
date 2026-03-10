@@ -40,3 +40,18 @@ the following environments are currently implemented
 | DRL10              | Reacher                        |
 | DRL11              | Walker 2D                      |
 | DRL12              | Lunar Lander                   |
+
+##Citation
+If you use the DRLXBench framework, the MODRL test suite, or the problem formulations described in this repository in your research, please cite the following paper:
+```bibtex
+@article{AJANI2024101692,
+  title = {Deep reinforcement learning as multiobjective optimization benchmarks: Problem formulation and performance assessment},
+  journal = {Swarm and Evolutionary Computation},
+  volume = {90},
+  pages = {101692},
+  year = {2024},
+  issn = {2210-6502},
+  doi = {[https://doi.org/10.1016/j.swevo.2024.101692](https://doi.org/10.1016/j.swevo.2024.101692)},
+  url = {[https://www.sciencedirect.com/science/article/pii/S221065022400230X](https://www.sciencedirect.com/science/article/pii/S221065022400230X)},
+  author = {Oladayo S. Ajani and Dzeuban Fenyom Ivan and Daison Darlan and P.N. Suganthan and Kaizhou Gao and Rammohan Mallipeddi}
+}
