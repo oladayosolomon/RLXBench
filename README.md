@@ -41,7 +41,8 @@ the following environments are currently implemented
 | DRL11              | Walker 2D                      |
 | DRL12              | Lunar Lander                   |
 
-##Citation
+## Citation
+
 If you use the DRLXBench framework, the MODRL test suite, or the problem formulations described in this repository in your research, please cite the following paper:
 ```bibtex
 @article{AJANI2024101692,
